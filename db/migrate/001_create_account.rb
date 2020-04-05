@@ -1,6 +1,6 @@
 class CreateAccount < ActiveRecord::Migration[4.2]
     def change
-        create_table :account do |a|
+        create_table :accounts do |a|
             a.string :name
             a.string :email
             a.integer :age

@@ -1,1 +1,17 @@
-Lets create new account
+<%= form_tag '/account' do %>
+    <label>Name: </label><br>
+    <%= text_field_tag :'register[name]' %><br>
+
+    <label>Age: </label><br>
+    <%= text_field_tag :'register[age]' %><br>
+
+    <label>Email: </label><br>
+    <%= text_field_tag :'register[email]' %><br>
+   
+    <label>Password: </label><br>
+    <%= text_field_tag :'register[password]' %><br>
+   
+    <%= submit_tag "Register" %>
+<% end %>
+
+<div><a href= "/" >Back</a></div>

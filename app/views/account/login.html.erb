@@ -1,0 +1,11 @@
+<%= form_tag sessions_path do %>
+    <label>Email: </label><br>
+    <%= text_field_tag :'login[email]' %><br>
+   
+    <label>Password: </label><br>
+    <%= text_field_tag :'login[password]' %><br>
+   
+    <%= submit_tag "Login" %>
+<% end %>
+
+<div><a href = '/account/new' >Register</a></div>
