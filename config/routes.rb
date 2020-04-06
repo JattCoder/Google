@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   post 'signup', to: 'account#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
-  get 'sessions', to: 'sessions#sessions'
 
-  get 'auth/:provider/callback', to: 'sessions#googleAuth'
-  get 'auth/failure', to: redirect('/')
+
+  get '/auth/:provider/callback' => 'sessions#omniauth'
 end

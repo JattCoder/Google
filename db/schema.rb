@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2) do
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.integer "age"
     t.string "password_digest"
   end
 

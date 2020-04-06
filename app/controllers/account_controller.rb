@@ -13,7 +13,7 @@ class AccountController < ApplicationController
     end
 
     def login
-        
+        redirect_to new_gsearch_path if session[:user_id] != nil
     end
 
 end
