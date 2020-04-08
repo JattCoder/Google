@@ -1,0 +1,24 @@
+<% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'>
+    <script>
+    function initMap(lat, lng) {
+      var myCoords = new google.maps.LatLng(lat, lng);
+      var mapOptions = {
+      center: myCoords,
+      zoom: 3
+      };
+      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+      var marker = new google.maps.Marker({
+          position: myCoords,
+          map: map
+      });
+  }
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%=41.429958%>, <%=-81.696899%>)
+    });
+    </script>
+  <% end %>
+
+  <p>
+    <div id="map"></div>
+</p>
