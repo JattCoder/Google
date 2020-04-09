@@ -1,23 +1,30 @@
 <% provide :head_tags do %>
     <meta name='turbolinks-visit-control' content='reload'>
     <script>
-    function initMap(lat, lng) {
-      var myCoords = new google.maps.LatLng(lat, lng);
-      var mapOptions = {
-      center: myCoords,
-      zoom: 5,
-      };
-      var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-      var marker = new google.maps.Marker({
-          position: myCoords,
-          map: map,
-          animation: google.maps.Animation.DROP
+    function initMap(geopoints) {
+      var center = Math.round(geopoints.length/2)
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat:geopoints[center][0], lng:geopoints[center][1]},
+        zoom: 10.25,
       });
-  }
+      var count = 0;
+      while (count < 3){
+        var marker = new google.maps.Marker({
+          draggable: true,
+          animation: google.maps.Animation.DROP,
+          label: String.valueOf(count),
+          position: {lat:geopoints[count][0],lng:geopoints[count][1]},
+          map: map,
+          title: 'Hello World!'
+        });
+        count += 1
+      }
+    }
     document.addEventListener("DOMContentLoaded", function(){
-        initMap(<%=41.429958%>, <%=-81.696899%>)
+        <% @geos = [[41.429958,-81.696899],[0,0],[21.429958,41.696899]]; %>
+        var geopoints = <%= raw @geos%>;
+        initMap(geopoints)
     });
     </script>
-  <% end %>
-
-  <div id="map"></div>
+<% end %>
+<div id="map"></div>
