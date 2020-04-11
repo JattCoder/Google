@@ -4,15 +4,21 @@
         <div id="map"></div>
         <div class="over_map">
             <div id="first_lay">
-                <form method="GET" action="">
-                    <input id="search" type="text" placeholder="Search Place">
-                    <input id="scr_btn"type="button" name="My button" value="Search" url(<%= asset_path 'ra.png' %>)  onClick="show_places(document.getElementById('search'));">
-                </form>
+                <%= form_tag gmap_search_path do %>
+                    <%= text_field_tag "search" ,nil, placeholder: 'Search Place'%>
+                    <%= submit_tag "Search", :id=>"scr_btn" %>
+                <% end %>
             </div>
         </div>
     </div>
     <script>
+    var map;
+    var markers;
+    var places;
     function initMap(geopoints) {
+      if (geopoints == null){
+        geopoints = get_geo(geopoints);
+      }
       var center = 0;
       var zoom = 10;
       if (geopoints > 1){
@@ -20,38 +26,46 @@
         zoom = 7;
       }
       map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat:geopoints[center][0], lng:geopoints[center][1]},
+        center: {lat:geopoints[center]["latitude"], lng:geopoints[center]["longitude"]},
         zoom: zoom,
       });
       for (var count = 0 ;count < geopoints.length; count++){
-        var marker = new google.maps.Marker({
+        markers = new google.maps.Marker({
           draggable: false,
           animation: google.maps.Animation.DROP,
           label: "A",
-          position: {lat:geopoints[count][0],lng:geopoints[count][1]},
+          position: {lat:geopoints[count]["latitude"],lng:geopoints[count]["longitude"]},
           map: map,
           title: 'Here i am!'
         });
         var contentString = "This is my city"
         var infowindow = new google.maps.InfoWindow({
-          content: contentString
+          content: geopoints[count]["name"]
         });
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
+        markers.addListener('click', function() {
+          infowindow.open(map, markers);
         });
       }
     }
     document.addEventListener("DOMContentLoaded", function(){
+        var geopoints = [];
+        <% @geos = []%>
         <% data = Gmaps.find_by(account_id: session[:user_id]) %>
-        <% @geos = [[data.latitude,data.longitude]]%>
-        var geopoints = <%= raw @geos%>;
+        <% account = Account.find_by(id: session[:user_id]) %>
+        <% @geos << {"name" => account.name, "latitude" => data.latitude, "longitude" => data.longitude}%>
+        <% if @search == [] %>
+          geopoints = <%= raw @geos.to_json %>
+        <% else%>
+          geopoints = <%= raw @search.to_json %>;
+        <% end %>
         initMap(geopoints)
     });
 
-    function show_places(search){
-      <% @client = GooglePlaces::Client.new(Rails.application.credentials.production[:api_id]) %>
-
-      alert(search.value)
+    function get_geo (geopoints){
+        var location = prompt("Please Enter Your City and State. *Still Not done at this part yet*");
+        if (location == ""){
+          get_geo(geopoints);
+        }
     }
     </script>
 <% end %>

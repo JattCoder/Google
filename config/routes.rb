@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'account_menu', to: 'menu#menu', as: 'menu'
   get 'gmap', to:'gmap#map', as: 'gmap'
+  post 'gmap/search', to:'gmap#results', as: 'gmap_search'
 
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 end
