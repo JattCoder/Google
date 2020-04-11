@@ -3,11 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 gem 'google-search', '~> 1.0', '>= 1.0.3'
+gem 'google_places'
 gem "bcrypt"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'google-api-client', '~> 0.11.1'
+gem 'geocoder'
+gem 'open_uri_redirections', '~> 0.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use sqlite3 as the database for Active Record

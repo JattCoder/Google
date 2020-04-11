@@ -1,30 +1,57 @@
 <% provide :head_tags do %>
     <meta name='turbolinks-visit-control' content='reload'>
+    <div id="fullscreen">
+        <div id="map"></div>
+        <div class="over_map">
+            <div id="first_lay">
+                <form method="GET" action="">
+                    <input id="search" type="text" placeholder="Search Place">
+                    <input id="scr_btn"type="button" name="My button" value="Search" url(<%= asset_path 'ra.png' %>)  onClick="show_places(document.getElementById('search'));">
+                </form>
+            </div>
+        </div>
+    </div>
     <script>
     function initMap(geopoints) {
-      var center = Math.round(geopoints.length/2)
+      var center = 0;
+      var zoom = 10;
+      if (geopoints > 1){
+        center = Math.round(geopoints.length/2);
+        zoom = 7;
+      }
       map = new google.maps.Map(document.getElementById('map'), {
         center: {lat:geopoints[center][0], lng:geopoints[center][1]},
-        zoom: 10.25,
+        zoom: zoom,
       });
-      var count = 0;
-      while (count < 3){
+      for (var count = 0 ;count < geopoints.length; count++){
         var marker = new google.maps.Marker({
-          draggable: true,
+          draggable: false,
           animation: google.maps.Animation.DROP,
-          label: String.valueOf(count),
+          label: "A",
           position: {lat:geopoints[count][0],lng:geopoints[count][1]},
           map: map,
-          title: 'Hello World!'
+          title: 'Here i am!'
         });
-        count += 1
+        var contentString = "This is my city"
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
       }
     }
     document.addEventListener("DOMContentLoaded", function(){
-        <% @geos = [[41.429958,-81.696899],[0,0],[21.429958,41.696899]]; %>
+        <% data = Gmaps.find_by(account_id: session[:user_id]) %>
+        <% @geos = [[data.latitude,data.longitude]]%>
         var geopoints = <%= raw @geos%>;
         initMap(geopoints)
     });
+
+    function show_places(search){
+      <% @client = GooglePlaces::Client.new(Rails.application.credentials.production[:api_id]) %>
+
+      alert(search.value)
+    }
     </script>
 <% end %>
-<div id="map"></div>

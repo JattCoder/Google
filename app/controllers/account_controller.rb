@@ -1,7 +1,8 @@
+require 'socket'
 class AccountController < ApplicationController
     
     def create
-        account = {:name => params[:register][:name],:email => params[:register][:email],:age => params[:register][:age].to_i,:password => params[:register][:password]}
+        account = {:name => params[:register][:name],:email => params[:register][:email],:password => params[:register][:password]}
         @user = Account.new(account)
         if @user.valid?
             if @user.save
@@ -13,7 +14,7 @@ class AccountController < ApplicationController
     end
 
     def login
-        redirect_to new_gsearch_path if session[:user_id] != nil
+        redirect_to menu_path if session[:user_id] != nil
     end
 
 end

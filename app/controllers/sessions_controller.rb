@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         user = Account.find_by(email: params[:login][:email])
         if user && user.authenticate(params[:login][:password])
             session[:user_id] = user.id
-            redirect_to new_gsearch_path, notice: "Logged in!"
+            redirect_to menu_path, notice: "Logged in!"
         else
             flash.now[:alert] = "Email or password is invalid"
             render 'error'
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
         @user = Account.from_omniauth(auth)
         @user.save
         session[:user_id] = @user.id
-        redirect_to new_gsearch_path
+        redirect_to menu_path
     end
     
     private
