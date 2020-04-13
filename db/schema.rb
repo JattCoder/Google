@@ -10,12 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 3) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "account_id"
+    t.string "location"
+    t.string "message"
+    t.string "title"
+    t.integer "admin"
+  end
+
+  create_table "gmaps", force: :cascade do |t|
+    t.integer "account_id"
+    t.float "latitude"
+    t.float "longitude"
   end
 
 end

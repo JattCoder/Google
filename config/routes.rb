@@ -13,12 +13,11 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'gmap', to:'gmap#map', as: 'gmap'
   post 'gmap/search', to:'gmap#results', as: 'gmap_search'
-  #post 'account/create', to: 
-  #get 'account-validating', to: 'account#validate'
-  #post 'account-validating', to: 'account#validate'
-  #get 'account/new', to: 'account#new'
-  #post 'signup', to: 'account#new', as: 'signup'
-  #get 'login', to: 'sessions#new', as: 'login'
+  get 'account_menu/chats', to:'chat#index'
+  get 'account_menu/chat/new', to:'chat#new'
+  post 'account_menu/chat/new', to:'chat#create'
+  get 'account_menu/chat/:id/:title/show', to:'chat#show'
+  post 'account_menu/chat/:id/:title/show', to:'chat#show', as: 'showchat'
 
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 end

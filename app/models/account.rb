@@ -1,6 +1,5 @@
 class Account < ActiveRecord::Base
     has_many :gmaps
-    has_many :chatbans, :through => :chats
     has_secure_password
     validates :email, uniqueness: true
     validates :email, :password, :name, :presence => true

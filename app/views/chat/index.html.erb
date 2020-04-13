@@ -1,0 +1,18 @@
+<a><%= @username %></a><br><br>
+
+<a>Chats in <%= @location%><br><br>
+
+<a> Chat Titles </a><br><br>
+
+
+<% if @allChats != nil %>
+    <% @allChats.each do |messages| %>
+        <%= form_tag showchat_path([messages.id],[messages.title]) do %>
+            <%= hidden_field_tag "location", messages.location %>
+            <%= hidden_field_tag "title", messages.title %>
+            <%= submit_tag messages.title,:class=>"titles"%>
+        <% end %>
+    <% end %>
+<% end %>
+
+<a href="/account_menu/chat/new">Create New Chat</a>
