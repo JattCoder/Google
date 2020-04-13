@@ -1,13 +1,24 @@
-<%= form_tag sessions_path do %>
-    <label>Email: </label><br>
-    <%= text_field_tag :'login[email]' %><br>
-   
-    <label>Password: </label><br>
-    <%= text_field_tag :'login[password]' %><br>
-   
-    <%= submit_tag "Login" %>
-<% end %>
-
-<div><a href = '/account/new' >Register</a></div>
-
-<%= link_to "Log In with Google", '/auth/google_oauth2' %>
+<div id="login">
+    <%= image_tag("login/google.png", :alt => "Google") %>
+    <%= form_tag account_auth_path do %>
+        <% if @errors %>
+            <script>
+                var errors = <%= raw @errors.to_json %>
+                var messages = "Error Messages:\n";
+                for(var i = 0; i < errors.length; i++){
+                    messages += (i+1).valueOf()+". "+errors[i]+"\n"
+                }
+                alert(messages);
+            </script>
+        <% end %>    
+        <%= text_field_tag 'email',nil, placeholder: 'Email', type: "text" %><br>
+        <%= text_field_tag 'password',nil, placeholder: 'Password', type: "password" %><br>
+        <%= submit_tag "Login", :id=>"login_btn" %>
+    <% end %>
+    <%= form_tag( '/auth/google_oauth2', :method => :get ) do %>
+        <% submit_tag "Login with Google", :id=>"googlebtn" %>
+    <% end %>
+    <%= form_tag( new_account_path, :method => :get ) do %>
+        <% submit_tag "Register", :id=>"registerbtn" %>
+    <% end %>
+</div>

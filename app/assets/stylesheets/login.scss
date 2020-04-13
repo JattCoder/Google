@@ -1,0 +1,134 @@
+img {
+    margin-left: 100px;
+    margin-bottom: 80px;
+    height: 120px;
+    border: 0px solid #ddd;
+    border-radius: 0px;
+    padding: 5px;
+    width: 170px;
+}
+  
+#login {
+    margin: 0 auto;
+    margin-top: 200px;
+    height: auto;
+    width: 400px;
+    background-size: 400px;
+    border-style: offset;
+    background-position: center;
+}
+
+#name {
+    margin-top: 20px;
+    border-radius: 25px;
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    color: #d92121;
+    width: 350px;
+    margin-top: -60px;
+    padding: 7px;
+    height: 35px;
+    border: 10px #ff0000;
+    border-style: offset;
+    position: absolute;
+    background-position: center;
+    background-color: lightgrey;
+}
+
+#email {
+    border-radius: 25px;
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    color: #d92121;
+    width: 350px;
+    padding: 7px;
+    height: 35px;
+    border: 10px #ff0000;
+    border-color: red;
+    border-style: offset;
+    position: absolute;
+    background-position: center;
+    background-color: lightgrey;
+}
+  
+#password {
+    margin-top: 20px;
+    border-radius: 25px;
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    color: #d92121;
+    width: 350px;
+    margin-top: 60px;
+    padding: 7px;
+    height: 35px;
+    border: 10px #ff0000;
+    border-style: offset;
+    position: absolute;
+    background-position: center;
+    background-color: lightgrey;
+}
+  
+#login_btn {
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: 40px;
+    width: 360px;
+    margin-top: 130px;
+    border-radius: 25px;
+    border-style: offset;
+    color: white;
+    border: 3px;
+    background: #d92121;
+    position: absolute;
+    background-position: center;
+}
+
+#googlebtn {
+    background-image: url('login/google_icon.jpg'); 
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: 40px;
+    width: 360px;
+    margin-top: 190px;
+    border-radius: 25px;
+    border-style: offset;
+    color: black;
+    border: 1px solid darkgrey;
+    background: white;
+    position: absolute;
+    background-position: center;
+}
+  
+#registerbtn {
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: 40px;
+    width: 360px;
+    margin-top: 240px;
+    border-radius: 25px;
+    border-style: offset;
+    color: black;
+    border: 3px;
+    background: white;
+    position: absolute;
+    background-position: center;
+}
+
+#close_btn {
+    width: 20px;
+    height: 20px; 
+}
+
+#close {
+    margin-left: -100px;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+}
