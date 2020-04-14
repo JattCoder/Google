@@ -6,13 +6,15 @@
 
 
 <% if @allChats != nil %>
-    <% @allChats.each do |messages| %>
-        <%= form_tag showchat_path([messages.id],[messages.title]) do %>
-            <%= hidden_field_tag "location", messages.location %>
-            <%= hidden_field_tag "title", messages.title %>
-            <%= submit_tag messages.title,:class=>"titles"%>
+    <% @allChats.each do |message| %>
+        <%= form_tag showchat_path([message.id],[message.title]) do %>
+            <%= hidden_field_tag "location", message.location %>
+            <%= hidden_field_tag "title", message.title %>
+            <%= submit_tag message.title,:class=>"titles"%>
         <% end %>
     <% end %>
 <% end %>
 
-<a href="/account_menu/chat/new">Create New Chat</a>
+<%= form_tag account_menu_chat_new_path, :method => :get do %>
+    <%= submit_tag "New Topic",:class=>"newtopic"%>
+<% end %>
