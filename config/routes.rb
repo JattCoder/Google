@@ -16,8 +16,11 @@ Rails.application.routes.draw do
   get 'account_menu/chats', to:'chat#index'
   get 'account_menu/chat/new', to:'chat#new'
   post 'account_menu/chat/new', to:'chat#create'
-  get 'account_menu/chat/:id/:title/show', to:'chat#show'
-  post 'account_menu/chat/:id/:title/show', to:'chat#show', as: 'showchat'
+  get 'account_menu/chat/:id/:title/chat', to:'chat#show'
+  post 'account_menu/chat/:id/:title/chat', to:'chat#show', as:'showchat'
+  post 'account_menu/chat/:id/:title/chat/reply=new', to:'chat#reply', as:'chatreply'
+  post 'account_menu/chat/:id/:title/chat/reply=submit', to:'chat#submit', as:'submitreply'
+  post 'account_menu/chat/:id/:title/chat/participants', to:'chat#participants', as:'chatusers'
 
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 end

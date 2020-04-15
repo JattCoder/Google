@@ -1,7 +1,7 @@
 require 'socket'
 class AccountController < ApplicationController
 
-    def new   
+    def new
     end
     
     def create

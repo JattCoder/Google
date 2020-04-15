@@ -1,2 +1,16 @@
-data will be shown here
-<%= binding.pry %>
+
+<% @allChats.each do |message| %>
+    <% if message.message[0] == "t" %>
+        Title: <%= message.title %><br>
+        Message: <%= message.message.split("-")[1] %><br><br>
+    <% elsif message.message[0] == "m" %>
+        Reply: <%= message.message.split("-")[1] %><br>
+    <% end %>
+<% end %>
+<%= form_tag chatreply_path([@selection.split(",")[0]],[@selection.split(",")[1]]), :method => 'post' do %>
+    <%= submit_tag "Reply",:class=>"newtopic"%>
+<% end %>
+
+<%= form_tag chatusers_path([@selection.split(",")[0]],[@selection.split(",")[1]]), :method => 'post' do %>
+    <%= submit_tag "Users",:class=>"users"%>
+<% end %>

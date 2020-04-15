@@ -1,16 +1,16 @@
 <a><%= @username %></a><br><br>
-
-<a>Chats in <%= @location%><br><br>
-
-<a> Chat Titles </a><br><br>
+<a>Topics in <%= @location%><br><br>
+<a>Titles: </a><br><br>
 
 
 <% if @allChats != nil %>
     <% @allChats.each do |message| %>
-        <%= form_tag showchat_path([message.id],[message.title]) do %>
-            <%= hidden_field_tag "location", message.location %>
-            <%= hidden_field_tag "title", message.title %>
-            <%= submit_tag message.title,:class=>"titles"%>
+        <% if message.message[0] == "t" %>
+            <%= form_tag showchat_path([message.id],[message.title]) do %>
+                <%= hidden_field_tag "location", message.location %>
+                <%= hidden_field_tag "title", message.title %>
+                <%= submit_tag message.title,:class=>"titles"%>
+            <% end %>
         <% end %>
     <% end %>
 <% end %>
