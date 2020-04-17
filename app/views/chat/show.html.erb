@@ -1,16 +1,26 @@
 
-<% @allChats.each do |message| %>
-    <% if message.message[0] == "t" %>
-        Title: <%= message.title %><br>
-        Message: <%= message.message.split("-")[1] %><br><br>
-    <% elsif message.message[0] == "m" %>
-        Reply: <%= message.message.split("-")[1] %><br>
-    <% end %>
+<%= stylesheet_link_tag "chat/show" %>
+<%= link_to image_tag("login/close.jpg", :id=>"close_btn"), account_menu_chats_path %>
+<% if @allChats[0].account_id == @allChats[0].admin %>
+    <%= link_to image_tag("chat/trash.png", :id=>"delete_btn"), chatdelete_path(:id => @allChats[0].id,:title => @allChats[0].title,:location => @allChats[0].location) %>
 <% end %>
-<%= form_tag chatreply_path([@selection.split(",")[0]],[@selection.split(",")[1]]), :method => 'post' do %>
-    <%= submit_tag "Reply",:class=>"newtopic"%>
-<% end %>
-
+<%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
+<h4 id="identity">Chat</h4>
 <%= form_tag chatusers_path([@selection.split(",")[0]],[@selection.split(",")[1]]), :method => 'post' do %>
-    <%= submit_tag "Users",:class=>"users"%>
+    <%= submit_tag "Users",:id=>"users"%>
 <% end %>
+<div id="nt_prt">
+    <% @allChats.each do |message| %>
+        <% if message.message[0] == "t" %>
+            <a id="top"><%= message.title %></a><br><br>
+            <a class="ui">Post Created By: <%= Account.find_by(id: message.account_id).name %></a>
+            <div class="ms"><%= message.message.split("-")[1] %></div>
+        <% elsif message.message[0] == "m" %>
+            <a class="ui">Reply: <%= Account.find_by(id: message.account_id).name %>
+            <div class="ms"><%= message.message.split("-")[1] %></div>
+        <% end %>
+    <% end %>
+    <%= form_tag chatreply_path([@selection.split(",")[0]],[@selection.split(",")[1]]), :method => 'post' do %>
+        <%= submit_tag "Reply",:id=>"reply"%>   
+    <% end %>
+</div>

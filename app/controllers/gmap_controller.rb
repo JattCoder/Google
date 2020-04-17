@@ -19,4 +19,17 @@ class GmapController < ApplicationController
         end
         render "map"
     end
+
+    def biz_view
+        @search = []
+        Business.all.each do |bizz|
+            biz = {
+                "name" => bizz.name,
+                "latitude" => bizz.latitude.to_f,
+                "longitude" => bizz.longitude.to_f
+            }
+            @search << biz
+        end
+        render "map"
+    end
 end

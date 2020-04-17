@@ -1,0 +1,39 @@
+.biz {
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: 40px;
+    width: 360px;
+    margin-top: 70px;
+    border-radius: 25px;
+    border-style: offset;
+    color: white;
+    border: 3px;
+    background: #d92121;
+    position: static;
+}
+
+.enterbiz {
+    border-radius: 25px;
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    color: #d92121;
+    width: 350px;
+    padding: 7px;
+    height: 35px;
+    border: 10px #ff0000;
+    border-color: red;
+    border-style: offset;
+    position: static;
+    background-position: center;
+    background-color: lightgrey;
+    margin-top: 20px;
+}
+
+#biztitle {
+    margin-left: 30%;
+    font-family: Verdana;
+    font-size: 20px;
+    font-family: monospace;
+}

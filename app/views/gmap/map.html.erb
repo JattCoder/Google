@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "maps/map" %>
+<%= link_to image_tag("login/close.jpg", :id=>"close_btn"), menu_path %>
 <% provide :head_tags do %>
     <meta name='turbolinks-visit-control' content='reload'>
     <div id="fullscreen">
@@ -50,10 +52,10 @@
     document.addEventListener("DOMContentLoaded", function(){
         var geopoints = [];
         <% @geos = []%>
-        <% data = Gmaps.find_by(account_id: session[:user_id]) %>
-        <% account = Account.find_by(id: session[:user_id]) %>
-        <% @geos << {"name" => account.name, "latitude" => data.latitude, "longitude" => data.longitude}%>
         <% if @search == [] %>
+          <% data = Gmaps.find_by(account_id: session[:user_id]) %>
+          <% account = Account.find_by(id: session[:user_id]) %>
+          <% @geos << {"name" => account.name, "latitude" => data.latitude, "longitude" => data.longitude}%>
           geopoints = <%= raw @geos.to_json %>
         <% else%>
           geopoints = <%= raw @search.to_json %>;

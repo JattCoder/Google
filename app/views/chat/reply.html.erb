@@ -1,4 +1,11 @@
-<%= form_tag submitreply_path([@data.id],[@data.title]) do %>
-    <%= text_field_tag 'message',nil, placeholder: 'Message', type: "text" %><br>
-    <%= submit_tag "Submit Reply",:id=>"sbt_btn", :style=>"margin-bottom" %>
-<% end %>
+<%= stylesheet_link_tag "chat/newchat" %>
+<%= link_to image_tag("login/close.jpg", :id=>"close_btn"), account_menu_chats_path %>
+<%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
+<h4 id="identity">Chat</h4>
+<a id="top"><%= params[:title] %></a>
+<div id="nt_prt">
+    <%= form_tag submitreply_path([@data.id],[@data.title]) do %>
+        <%= text_field_tag 'nmessage',nil, placeholder: 'Message', type: "text" %><br>
+        <%= submit_tag "Submit Reply",:id=>"create_btn", :style=>"margin-bottom" %>
+    <% end %>
+</div>

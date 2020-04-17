@@ -1,20 +1,27 @@
-<a><%= @username %></a><br><br>
-<a>Topics in <%= @location%><br><br>
-<a>Titles: </a><br><br>
-
-
-<% if @allChats != nil %>
-    <% @allChats.each do |message| %>
-        <% if message.message[0] == "t" %>
-            <%= form_tag showchat_path([message.id],[message.title]) do %>
-                <%= hidden_field_tag "location", message.location %>
-                <%= hidden_field_tag "title", message.title %>
-                <%= submit_tag message.title,:class=>"titles"%>
+<%= stylesheet_link_tag "chat/chat" %>
+<%= link_to image_tag("login/close.jpg", :id=>"close_btn"), menu_path %>
+<%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
+<h4 id="identity">Chat</h4>
+</div>
+<div id="heading">
+    <a><%= @username %></a>
+    <a>    |    <%= @location%></a><br><br><br>
+</div>
+<div id="nt_prt">
+    <a id="top">Topics</a>
+    <% if @allChats != nil %>
+        <% @allChats.each do |message| %>
+            <% if message.message[0] == "t" %>
+                <%= form_tag showchat_path([message.id],[message.title]) do %>
+                    <%= hidden_field_tag "location", message.location %>
+                    <%= hidden_field_tag "title", message.title %>
+                    <%= submit_tag message.title,:class=>"titles", id: 'title'%>
+                <% end %>
             <% end %>
         <% end %>
     <% end %>
-<% end %>
 
-<%= form_tag account_menu_chat_new_path, :method => :get do %>
-    <%= submit_tag "New Topic",:class=>"newtopic"%>
-<% end %>
+    <%= form_tag account_menu_chat_new_path, :method => :get do %>
+        <%= submit_tag "New Topic",:class=>"newtopic", id:"new_title"%>
+    <% end %>
+</div>

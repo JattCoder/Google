@@ -1,3 +1,3 @@
 class Chatban < ActiveRecord::Base
-    belongs_to :chats 
+    belongs_to :chat
 end

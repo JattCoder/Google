@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag "business/newbiz" %>
+<%= link_to image_tag("login/close.jpg", :id=>"close_btn"), account_menu_chats_path %>
+<%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
+<h4 id="identity">Business</h4>
+<div id="nt_prt">
+    <a id="biztitle">New Business</a>
+    <%= form_tag addbizz_path do %>
+        <% if @error %>
+            <script>
+                alert(raw <%= @error.to_json %>)
+            </script>
+        <% end %>
+        <%= text_field_tag 'nbname',nil, placeholder: 'Business Name', :class => 'enterbiz', type: "text" %><br>
+        <%= text_field_tag 'nbaddress',nil, placeholder: 'Business Address', :class => 'enterbiz', type: "text" %><br>
+        <%= text_field_tag 'nbtype',nil, placeholder: 'Business Type', :class => 'enterbiz', type: "text" %><br>
+        <%= submit_tag "Add Business",:class=>"biz"%>
+    <% end %>
+</div>

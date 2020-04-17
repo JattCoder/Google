@@ -1,0 +1,93 @@
+#glogo{
+    height: 70px;
+    width: 70px;
+    margin-left: -10px;
+    margin-bottom: -20px;
+    margin-right: -15px;
+    display: inline-block;
+}
+
+#identity {
+    width: auto;
+    height: 80px;
+    font-family: monospace;
+    font-size: 30px;
+    color: #296d98;
+    display: inline-block;
+}
+
+#top{
+    margin-left: 36%;
+    font-size: 20px;
+    font-family: monospace;
+    margin-top: 50px;
+}
+
+#ntitle {
+    border-radius: 25px;
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    color: #d92121;
+    width: 350px;
+    padding: 7px;
+    height: 35px;
+    border: 10px #ff0000;
+    border-color: red;
+    border-style: offset;
+    position: absolute;
+    background-position: center;
+    background-color: lightgrey;
+}
+  
+#nmessage {
+    margin-top: 20px;
+    border-radius: 25px;
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    color: #d92121;
+    width: 350px;
+    margin-top: 60px;
+    padding: 7px;
+    height: 35px;
+    border: 10px #ff0000;
+    border-style: offset;
+    position: absolute;
+    background-position: center;
+    background-color: lightgrey;
+}
+  
+#create_btn {
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: 40px;
+    width: 360px;
+    margin-top: 130px;
+    border-radius: 25px;
+    border-style: offset;
+    color: white;
+    border: 3px;
+    background: #d92121;
+    position: absolute;
+    background-position: center;
+}
+  
+#nt_prt {
+    margin: 0 auto;
+    height: auto;
+    width: 500px;
+    background-size: 400px;
+    border-style: offset;
+    background-position: center;
+}
+
+#close_btn {
+    width: 20px;
+    height: 20px; 
+    margin-right: 25px;
+    margin-top: 0px;
+    float: right;
+    position: absolute;
+}
