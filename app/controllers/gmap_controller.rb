@@ -17,7 +17,7 @@ class GmapController < ApplicationController
     def results
         @search = []
         @input = params[:search]
-        @client = GooglePlaces::Client.new('AIzaSyCo_oi77Myi1Atxai8-Ocz9gdFV3upyPjU')
+        @client = GooglePlaces::Client.new(Rails.application.credentials.production[:api_key])
         @client.spots_by_query(params[:search]).each do |place|
             plc = {
                 "name" => place.json_result_object["name"],
