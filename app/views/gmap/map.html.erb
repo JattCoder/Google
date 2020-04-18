@@ -35,7 +35,7 @@
         markers = new google.maps.Marker({
           draggable: false,
           animation: google.maps.Animation.DROP,
-          label: "A",
+          label: (count+1).toString(),
           position: {lat:geopoints[count]["latitude"],lng:geopoints[count]["longitude"]},
           map: map,
           title: 'Here i am!'
@@ -53,6 +53,7 @@
         var geopoints = [];
         <% @geos = []%>
         <% if @search == [] %>
+          var src = <%= raw @input.to_json%>
           <% data = Gmaps.find_by(account_id: session[:user_id]) %>
           <% account = Account.find_by(id: session[:user_id]) %>
           <% @geos << {"name" => account.name, "latitude" => data.latitude, "longitude" => data.longitude}%>
