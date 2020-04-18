@@ -11,6 +11,7 @@ gem 'dotenv-rails'
 gem 'google-api-client', '~> 0.11.1'
 gem 'geocoder'
 gem 'open_uri_redirections', '~> 0.2.1'
+gem "google_custom_search_api"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use sqlite3 as the database for Active Record

@@ -103,6 +103,9 @@ GEM
       retriable (>= 2.0, < 4.0)
     google-search (1.0.3)
       json
+    google_custom_search_api (2.0.0)
+      addressable
+      httparty
     google_places (2.0.0)
       httparty (>= 0.13.1)
     googleauth (0.11.0)
@@ -310,6 +313,7 @@ DEPENDENCIES
   geocoder
   google-api-client (~> 0.11.1)
   google-search (~> 1.0, >= 1.0.3)
+  google_custom_search_api
   google_places
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)

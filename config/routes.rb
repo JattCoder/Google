@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   post 'account_create', to: 'account#create'
   get 'account_menu', to: 'menu#menu', as: 'menu'
   get 'logout', to: 'sessions#destroy', as: 'logout'
-  get 'gmap', to:'gmap#map', as: 'gmap'
-  post 'gmap/search', to:'gmap#results', as: 'gmap_search'
-  get 'gmap/search', to:'gmap#map'
+  get 'account_menu/gmap', to:'gmap#map', as: 'gmap'
+  post 'account_menu/gmap/search', to:'gmap#results', as: 'gmap_search'
+  get 'account_menu/gmap/search', to:'gmap#map'
   get 'account_menu/chats', to:'chat#index'
   get 'account_menu/chat/new', to:'chat#new'
   post 'account_menu/chat/new', to:'chat#create'
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   post 'account_menu/business/new', to: 'business#add_biz'
   post 'account_menu/business/:name/:address', to: 'business#sel_biz', as:'selbizz'
   post 'account_menu/business/maps', to:'gmap#biz_view', as:'mapview'
+  get 'account_menu/gsearch', to:'gsearch#new', as:'gsearch'
 
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 end
