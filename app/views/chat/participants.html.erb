@@ -3,12 +3,12 @@
 <%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
 <h4 id="identity">Chat</h4>
 <a id="top"><%= params[:title] %>  | Participants</a>
-<div id="nt_prt">
+<div id="cen_prt">
     <% @allUsers.each do |user| %>
         <% if user[:name] == @admin.name %>
             <div class="show">
+                <%= link_to image_tag("chat/active_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:userid => user[:id],:location => Chat.find_by(id: @params[:id]).location), method: :post %>
                 <a class="show_user"><%= user[:name] %> - <%= user[:email] %> (Admin)</a>
-                <%= link_to image_tag("chat/active_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:location => Chat.find_by(id: @params[:id]).location) %>
             </div>
         <% else %>
             <div class="show">
@@ -17,11 +17,11 @@
                     <% active = false if userr.id == user[:id]%>
                 <% end %>
                 <% if active == true %>
+                    <%= link_to image_tag("chat/active_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:userid => user[:id],:location => Chat.find_by(id: @params[:id]).location, :active => true), method: :post %>
                     <a class="show_user"><%= user[:name] %> - <%= user[:email] %></a>
-                    <%= link_to image_tag("chat/active_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:location => Chat.find_by(id: @params[:id]).location, :active => true) %>
                 <% else %>
+                    <%= link_to image_tag("chat/inactive_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:userid => user[:id],:location => Chat.find_by(id: @params[:id]).location, :active => false), method: :post %>
                     <a class="show_user"><%= user[:name] %> - <%= user[:email] %></a>
-                    <%= link_to image_tag("chat/inactive_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:location => Chat.find_by(id: @params[:id]).location, :active => false) %>
                 <% end %>
             </div>
         <% end %>

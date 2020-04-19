@@ -33,8 +33,10 @@ class ChatController < ApplicationController
     end
 
     def show
-        banned = Chatban.find_by(account_id: Chat.find_by(id: params[:id]).account_id)
-        render 'index' if banned
+        banned = Chatban.find_by(account_id: session[:user_id], chat_id: Chat.find_by(id: params[:id]).id)
+        if banned
+            redirect_to account_menu_chats_path
+        end
         @selection = "#{params[:id]},#{params[:title]}"
         @allChats = Chat.where(location: Chat.find_by(id: @selection.split(",")[0]).location, title: @selection.split(",")[1])
     end
@@ -75,11 +77,21 @@ class ChatController < ApplicationController
             @allUsers << userdata
         end
         @allUsers = @allUsers.uniq!
-        @inactive = Chatban.all
+        @inactive = Chatban.where(chat_id: params[:id].to_i)
     end
 
     def ban
-        binding.pry
+        if params[:user_id].to_i != Chat.find_by(id: params[:id]).admin
+            account_menu_chats_path
+        end
+        banned = Chatban.find_by(account_id: params[:userid], chat_id: params[:id])
+        if banned
+            banned.destroy
+        else
+            banned = Chatban.new({account_id: params[:userid], chat_id: params[:id]})
+            banned.save
+        end
+        account_menu_chats_path
     end
 
     def delete

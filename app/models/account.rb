@@ -1,7 +1,7 @@
 class Account < ActiveRecord::Base
-    has_many :gmaps
     has_many :chats
     has_many :businesss
+    has_many :gmaps, through: :businesss
     has_many :items, through: :businesss
     has_many :chatbans, through: :chats
     has_secure_password

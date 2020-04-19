@@ -54,6 +54,8 @@ class GmapController < ApplicationController
             "address" => bizz.address
         }
         @search << biz
+        location = Gmaps.new({:account_id => session[:user_id], :latitude => bizz.latitude.to_f, :longitude => bizz.longitude.to_f})
+        location.save
         render 'map'
     end
 end
