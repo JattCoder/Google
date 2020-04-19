@@ -1,0 +1,14 @@
+<%= stylesheet_link_tag "business/newbiz" %>
+<%= link_to image_tag("login/close.jpg", :id=>"close_btn"), account_menu_chats_path %>
+<%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
+<h4 id="identity">Business</h4>
+<div id="nt_prt">
+    <a id="biztitle"><%= @business.name%></a>
+    <%= form_tag updatebiz_path do %>
+        <%= text_field_tag 'nbname',nil, value: @business.name, :class => 'enterbiz', type: "text" %><br>
+        <%= text_field_tag 'nbaddress',nil, value: @business.address, :class => 'enterbiz', type: "text" %><br>
+        <%= text_field_tag 'nbtype',nil, value: @business.biztype, :class => 'enterbiz', type: "text" %><br>
+        <%= hidden_field_tag "id", @business.id %>
+        <%= submit_tag "Update Business",:class=>"biz"%>
+    <% end %>
+</div>

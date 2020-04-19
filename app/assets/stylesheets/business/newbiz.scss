@@ -13,6 +13,38 @@
     position: static;
 }
 
+.mapit {
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: 40px;
+    width: 160px;
+    border-radius: 10px;
+    border-style: offset;
+    color: white;
+    border: 3px;
+    background: rgb(255, 174, 0);
+    float: left;
+    margin-left: 80%;
+    margin-top: -115px;
+}
+
+.editbiz {
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: 40px;
+    width: 160px;
+    border-radius: 10px;
+    border-style: offset;
+    color: white;
+    border: 3px;
+    background: rgb(255, 174, 0);
+    float: left;
+    margin-left: 68%;
+    margin-top: -115px;
+}
+
 .enterbiz {
     border-radius: 25px;
     font-family: Verdana;
@@ -31,9 +63,59 @@
     margin-top: 20px;
 }
 
-#biztitle {
+.items {
     margin-left: 30%;
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: auto;
+    width: 500px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border-style: offset;
+    color: black;
+    border: 1px solid black;
+    background: white;
+    position: static;
+    background-position: center;
+    padding: 15px;
+}
+
+.newitem {
+    margin-left: 35%;
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: 40px;
+    width: 360px;
+    margin-top: 130px;
+    border-radius: 25px;
+    border-style: offset;
+    color: white;
+    border: 3px;
+    background: #d92121;
+    position: absolute;
+    background-position: center;
+}
+
+#close_biz {
+    width: 20px;
+    height: 20px; 
+    right: 25px;
+    margin: 40px;
+    position: absolute;
+}
+
+#biztitle {
+    width: 300px;
+    margin-left: 16%;
     font-family: Verdana;
     font-size: 20px;
     font-family: monospace;
+}
+
+#biztop {
+    margin-left: 25%;
+    font-family: monospace;
+    font-size: 20px;
 }

@@ -1,4 +1,28 @@
 <%= stylesheet_link_tag "business/newbiz" %>
-<%= link_to image_tag("login/close.jpg", :id=>"close_btn"), account_menu_chats_path %>
+<%= link_to image_tag("login/close.jpg", :id=>"close_biz"), selectbizz_path %>
 <%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
 <h4 id="identity">Business</h4>
+<a id="biztop"><%= params[:name]%> | Items</a>
+<%= form_tag showbiz_path do %>
+        <%= hidden_field_tag "biz_id", @params[:business] %>
+        <%= submit_tag "On Map",:class=>"mapit"%>
+<% end %>
+<% if Business.find_by(id: params[:business]).account_id == session[:user_id] %>
+        <%= form_tag editbiz_path do %>
+                <%= hidden_field_tag "biz_id", @params[:business] %>
+                <%= submit_tag "Edit Business",:class=>"editbiz"%>
+        <% end %>
+<% end %>
+<% @items.each do |item| %>
+        <div class="items">
+                <% image_tag(item.image,:alt=>"item",id:"itempic")%>
+                <a id="itemname"><%= item.name %></a>
+                <a id="itemcost"> - $<%= item.cost %></a>
+        </div>
+<% end %>
+<% if Business.find_by(id: params[:business]).account_id == session[:user_id] %>
+        <%= form_tag additem_path do %>
+                <%= hidden_field_tag "biz_id", params[:business]%>
+                <%= submit_tag "Add Item",:class=>"newitem"%>
+        <% end %>
+<% end %>

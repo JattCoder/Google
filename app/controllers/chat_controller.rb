@@ -11,7 +11,8 @@ class ChatController < ApplicationController
     end
 
     def create
-        render 'new' if params[:title] == nil || params[:title] == ""
+        redirect_to root_path if session[:user_id] == nil
+        render 'new' if params[:ntitle] == nil || params[:ntitle] == ""
         data = JSON.load(open("https://ipapi.co/json/"))
         location = "#{data['city']}, #{data['region']}"
         msg = "t-"+params[:nmessage]
@@ -22,7 +23,7 @@ class ChatController < ApplicationController
             :title => params[:ntitle],
             :admin => session[:user_id]
         }
-        chat = Chat.find_by(title: params[:title], location: location)
+        chat = Chat.find_by(title: params[:ntitle], location: location)
         if chat
         else
             chat = Chat.new(new_chat)

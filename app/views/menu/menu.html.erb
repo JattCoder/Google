@@ -1,7 +1,26 @@
-<div><a href='/logout'>Logout</a></div>
-<div><a href="/account_menu/gmap">Google Maps</a></div>
-<div><a href="/account_menu/chats">Neighbourhood Chat</a></div>
-<div><a href="/account_menu/business">Google Business<a></div>
-<div><a href="account_menu/gsearch">Google Search<a></div>
+<%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
+<h4 id="identity">Menu</h4>
 
-logout_path
+<%= form_tag logout_path, method: :get do %>
+        <%= submit_tag "Logout",:class=>"logout"%>
+<% end %>
+
+<div class="google-border">
+    <%= image_tag("chat/google_icon.jpg", :alt => "Search", id: 'glogo') %>
+    <div class="gservice"><a href="account_menu/gsearch">Google Search<a></div>
+</div>
+
+<div class="google-border">
+    <%= image_tag("menu/map_search.png", :alt => "Map", id: 'glogo') %>
+    <div class="gservice"><a href="/account_menu/gmap">Google Maps<a></div>
+</div>
+
+<div class="google-border">
+    <%= image_tag("menu/google_chat.png", :alt => "Chat", id: 'glogo') %>
+    <div class="gservice"><a href="/account_menu/chats">Google Chat<a></div>
+</div>
+
+<div class="google-border">
+    <%= image_tag("menu/business.jpg", :alt => "Business", id: 'glogo') %>
+    <div class="gservice"><a href="/account_menu/business">Google Business<a></div>
+</div>

@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag "business/newbiz" %>
-<%= link_to image_tag("login/close.jpg", :id=>"close_btn"), account_menu_chats_path %>
+<%= link_to image_tag("login/close.jpg", :id=>"close_biz"), menu_path %>
 <%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
 <h4 id="identity">Business</h4>
 <div id="nt_prt">
@@ -12,8 +12,5 @@
     <% end %>
     <%= form_tag addbizz_path, :method => 'GET' do %>
         <%= submit_tag "Add Business",:class=>"biz"%>
-    <% end %>
-    <%= form_tag mapview_path do %>
-        <%= submit_tag "On Map",:class=>"biz"%>
     <% end %>
 </div>

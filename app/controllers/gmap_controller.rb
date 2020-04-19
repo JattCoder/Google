@@ -32,7 +32,9 @@ class GmapController < ApplicationController
                     biz = {
                         "name" => bizz.name,
                         "latitude" => bizz.latitude.to_f,
-                        "longitude" => bizz.longitude.to_f
+                        "longitude" => bizz.longitude.to_f,
+                        "type" => bizz.type,
+                        "address" => bizz.address
                     }
                     @search << biz
                 end
@@ -41,16 +43,17 @@ class GmapController < ApplicationController
         render "map"
     end
 
-    def biz_view
+    def single_biz_view
         @search = []
-        Business.all.each do |bizz|
-            biz = {
-                "name" => bizz.name,
-                "latitude" => bizz.latitude.to_f,
-                "longitude" => bizz.longitude.to_f
-            }
-            @search << biz
-        end
-        render "map"
+        bizz = Business.find_by(id: params[:biz_id])
+        biz = {
+            "name" => bizz.name,
+            "latitude" => bizz.latitude.to_f,
+            "longitude" => bizz.longitude.to_f,
+            "type" => bizz.biztype,
+            "address" => bizz.address
+        }
+        @search << biz
+        render 'map'
     end
 end
