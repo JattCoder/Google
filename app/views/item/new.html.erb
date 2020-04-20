@@ -7,7 +7,7 @@
         <%= text_field_tag 'newimage',nil, placeholder: 'Paste Image Url', type: "text" %><br>
         <%= text_field_tag 'newname',nil, placeholder: 'Item Name', type: "text" %><br>
         <%= text_field_tag 'newcost',nil, placeholder: 'Item Cost', type: "text" %><br>
-        <%= text_field_tag 'newdiscription',nil, placeholder: 'Item Cost', type: "text" %><br>
+        <%= text_field_tag 'newdiscription',nil, placeholder: 'Item Description', type: "text" %><br>
         <%= hidden_field_tag "biz_id", @business.id %>
         <%= submit_tag "Add Item",:class=>"newitem"%>
 <% end %>

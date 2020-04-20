@@ -36,8 +36,9 @@ class BusinessController < ApplicationController
             location = Geocoder.address(params[:nbaddress])
             coordinates = Geocoder.coordinates(params[:nbaddress])
             if location == nil || location == "" || coordinates == nil || coordinates == ""
+                @business = Business.find_by(id: params[:id])
                 @error = "Failed to find location. Please Try Again!"
-                render 'add_biz'
+                render 'edit_biz'
             else
                 business = Business.find_by(id: params[:id])
                 business.name = params[:nbname]

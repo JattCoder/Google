@@ -76,29 +76,31 @@ class ChatController < ApplicationController
             }
             @allUsers << userdata
         end
-        @allUsers = @allUsers.uniq!
+        @allUsers = @allUsers.uniq
         @inactive = Chatban.where(chat_id: params[:id].to_i)
     end
 
     def ban
-        if params[:user_id].to_i != Chat.find_by(id: params[:id]).admin
-            account_menu_chats_path
+        if params[:user_id].to_i == Chat.find_by(id: params[:id]).admin
+            banned = Chatban.find_by(account_id: params[:userid], chat_id: params[:id])
+            if banned
+                banned.destroy
+            else
+                banned = Chatban.new({account_id: params[:userid], chat_id: params[:id]})
+                banned.save
+            end
         end
-        banned = Chatban.find_by(account_id: params[:userid], chat_id: params[:id])
-        if banned
-            banned.destroy
-        else
-            banned = Chatban.new({account_id: params[:userid], chat_id: params[:id]})
-            banned.save
-        end
-        account_menu_chats_path
+        redirect_to chatusers_path([params[:id]],[params[:title]])
     end
 
     def delete
         redirect_to root_path if session[:user_id] == nil
         redirect_to account_menu_chats_path if params[:id] == nil || params[:id] == ""
         chat = Chat.where(title: params[:title], location: params[:location])
-        chat.destroy_all
+        @error = ""
+        if session[:user_id].to_i == chat[0].admin.to_i
+            chat.destroy_all
+        end
         redirect_to account_menu_chats_path
     end
 

@@ -14,7 +14,9 @@
             <div class="show">
                 <% active = true %>
                 <% @inactive.each do |userr| %>
-                    <% active = false if userr.id == user[:id]%>
+                    <%if userr.account_id == user[:id]%>
+                        <% active = false %>
+                    <% end %>
                 <% end %>
                 <% if active == true %>
                     <%= link_to image_tag("chat/active_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:userid => user[:id],:location => Chat.find_by(id: @params[:id]).location, :active => true), method: :post %>
