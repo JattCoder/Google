@@ -2,6 +2,11 @@
 <%= link_to image_tag("login/close.jpg", :id=>"close_btn"), selectbizz_path %>
 <%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
 <h4 id="identity">Business</h4>
+<% if @error %>
+    <script>
+        alert(<%= raw @error.to_json%>)
+    </script>
+<% end %>
 <div id="nt_prt">
     <a id="biztitle">New Business</a>
     <%= form_tag account_menu_business_new_path do %>

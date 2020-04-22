@@ -10,6 +10,7 @@ class BusinessController < ApplicationController
         else
             add_new_biz = Business.add_new_business(current_user.id,params)
             if add_new_biz == false
+                @error = "Invalid Location. Please Try Again."
                 render 'add_biz' 
             else
                 redirect_to selectbizz_path
