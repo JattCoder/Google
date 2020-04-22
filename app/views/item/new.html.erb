@@ -3,7 +3,7 @@
 <%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
 <h4 id="identity">Item</h4>
 <a id="top"><%= @business.name %>  | New Item</a>
-<%= form_tag addtobiz_path do %>
+<%= form_tag addtobiz_path([params[:biz_id]],[params[:name]]) do %>
         <%= text_field_tag 'newimage',nil, placeholder: 'Paste Image Url', type: "text" %><br>
         <%= text_field_tag 'newname',nil, placeholder: 'Item Name', type: "text" %><br>
         <%= text_field_tag 'newcost',nil, placeholder: 'Item Cost', type: "text" %><br>

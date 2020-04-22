@@ -7,7 +7,7 @@
     <% @allUsers.each do |user| %>
         <% if user[:name] == @admin.name %>
             <div class="show">
-                <%= link_to image_tag("chat/active_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:userid => user[:id],:location => Chat.find_by(id: @params[:id]).location), method: :post %>
+                <%= link_to image_tag("chat/active_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:userid => user[:id],:location => @params[:format]), method: :post %>
                 <a class="show_user"><%= user[:name] %> - <%= user[:email] %> (Admin)</a>
             </div>
         <% else %>
@@ -19,10 +19,10 @@
                     <% end %>
                 <% end %>
                 <% if active == true %>
-                    <%= link_to image_tag("chat/active_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:userid => user[:id],:location => Chat.find_by(id: @params[:id]).location, :active => true), method: :post %>
+                    <%= link_to image_tag("chat/active_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:userid => user[:id],:location => params[:format], :active => true), method: :post %>
                     <a class="show_user"><%= user[:name] %> - <%= user[:email] %></a>
                 <% else %>
-                    <%= link_to image_tag("chat/inactive_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:userid => user[:id],:location => Chat.find_by(id: @params[:id]).location, :active => false), method: :post %>
+                    <%= link_to image_tag("chat/inactive_user.png", :id=>"block_btn"), chatuserblock_path(:id => @params[:id],:title => @params[:title],:name => user[:name],:userid => user[:id],:location => params[:format], :active => false), method: :post %>
                     <a class="show_user"><%= user[:name] %> - <%= user[:email] %></a>
                 <% end %>
             </div>

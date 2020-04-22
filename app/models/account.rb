@@ -9,6 +9,7 @@ class Account < ActiveRecord::Base
     validates :email, :password, :name, :presence => true
     validates :password, :length => { :minimum => 6 }
     scope :account, -> (email) { find_by(email: email) }
+    scope :chat_admin, -> (account_id) { find_by(id: account_id) } 
 
     def self.from_omniauth(auth)
         where(email: auth.info.email).first_or_initialize do |user|

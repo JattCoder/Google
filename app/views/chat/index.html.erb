@@ -12,7 +12,7 @@
     <% if @allChats != nil %>
         <% @allChats.each do |message| %>
             <% if message.message[0] == "t" %>
-                <%= form_tag showchat_path([message.id],[message.title]) do %>
+                <%= form_tag showchat_path([message.title]) do %>
                     <%= hidden_field_tag "location", message.location %>
                     <%= hidden_field_tag "title", message.title %>
                     <%= submit_tag message.title,:class=>"titles", id: 'title'%>

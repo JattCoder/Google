@@ -5,12 +5,13 @@
 <div id="nt_prt">
     <a id="biztitle">My Business</a>
     <% @bizz.each do |business| %>
-        <%= form_tag selbizz_path([business.name],[business.address]) do %>
+        <%= form_tag selbizz_path([business.id],[business.name]) do %>
             <%= hidden_field_tag "business", business.id %>
+            <%= hidden_field_tag "business_name", business.name %>
             <%= submit_tag business.name,:class=>"biz"%>
         <% end %>
     <% end %>
     <%= form_tag addbizz_path, :method => 'GET' do %>
-        <%= submit_tag "Add Business",:class=>"biz"%>
+        <%= submit_tag "Add Business",:class=>"add_biz"%>
     <% end %>
 </div>

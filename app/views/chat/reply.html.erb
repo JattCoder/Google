@@ -4,8 +4,10 @@
 <h4 id="identity">Chat</h4>
 <a id="top"><%= params[:title] %></a>
 <div id="nt_prt">
-    <%= form_tag submitreply_path([@data.id],[@data.title]) do %>
+    <%= form_tag submitreply_path([params[:title]]) do %>
         <%= text_field_tag 'nmessage',nil, placeholder: 'Message', type: "text" %><br>
+        <%= hidden_field_tag "location", params[:location] %>
+        <%= hidden_field_tag "title", params[:title] %>
         <%= submit_tag "Submit Reply",:id=>"create_btn", :style=>"margin-bottom" %>
     <% end %>
 </div>

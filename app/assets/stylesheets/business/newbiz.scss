@@ -4,12 +4,27 @@
     outline-width: 0;
     height: 40px;
     width: 360px;
-    margin-top: 70px;
+    margin-top: 30px;
     border-radius: 25px;
     border-style: offset;
     color: white;
     border: 3px;
     background: #d92121;
+    position: static;
+}
+
+.add_biz {
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: 40px;
+    width: 360px;
+    margin-top: 70px;
+    border-radius: 25px;
+    border-style: offset;
+    color: white;
+    border: 3px;
+    background: #00ccff;
     position: static;
 }
 
@@ -27,6 +42,22 @@
     float: left;
     margin-left: 80%;
     margin-top: -115px;
+}
+
+.del_biz {
+    font-family: Verdana;
+    outline: none;
+    outline-width: 0;
+    height: 40px;
+    width: 160px;
+    border-radius: 10px;
+    border-style: offset;
+    color: white;
+    border: 3px;
+    background: rgb(255, 174, 0);
+    float: left;
+    margin-left: 80%;
+    margin-top: -50px;
 }
 
 .editbiz {

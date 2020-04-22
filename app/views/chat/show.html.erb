@@ -1,12 +1,17 @@
 
 <%= stylesheet_link_tag "chat/show" %>
 <%= link_to image_tag("login/close.jpg", :id=>"close_btn"), account_menu_chats_path %>
+<% if @allChats.length == 0 %>
+    <% @allChats = Chat.all_messages(params[:format],params[:title]) %>
+<% end %>
 <% if @allChats[0].account_id == @allChats[0].admin %>
     <%= link_to image_tag("chat/trash.png", :id=>"delete_btn"), chatdelete_path(:id => @allChats[0].id,:title => @allChats[0].title,:location => @allChats[0].location) %>
 <% end %>
 <%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
 <h4 id="identity">Chat</h4>
-<%= form_tag chatusers_path([@selection.split(",")[0]],[@selection.split(",")[1]]), :method => 'post' do %>
+<%= form_tag chatusers_path([params[:title]],[params[:location]]), :method => 'post' do %>
+    <% hidden_field_tag "title", value:params[:title] %>
+    <% hidden_field_tag "location", value:params[:location] %>
     <%= submit_tag "Users",:id=>"users"%>
 <% end %>
 <div id="nt_prt">
@@ -20,7 +25,9 @@
             <div class="ms"><%= message.message.split("-")[1] %></div>
         <% end %>
     <% end %>
-    <%= form_tag chatreply_path([@selection.split(",")[0]],[@selection.split(",")[1]]), :method => 'post' do %>
+    <%= form_tag chatreply_path(params[:title]), :method => 'post' do %>
+        <%= hidden_field_tag "location", @allChats[0].location %>
+        <%= hidden_field_tag "title", @allChats[0].title %>
         <%= submit_tag "Reply",:id=>"reply"%>   
     <% end %>
 </div>

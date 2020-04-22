@@ -3,11 +3,15 @@
 <%= image_tag("chat/google_icon.jpg", :alt => "Google", id: 'glogo') %>
 <h4 id="identity">Business</h4>
 <a id="biztop"><%= params[:name]%> | Items</a>
+<%= form_tag deletebiz_path do %>
+        <%= hidden_field_tag "biz_id", @params[:business] %>
+        <%= submit_tag "Delete Business",:class=>"del_biz"%>
+<% end %>
 <%= form_tag showbiz_path do %>
         <%= hidden_field_tag "biz_id", @params[:business] %>
         <%= submit_tag "On Map",:class=>"mapit"%>
 <% end %>
-<% if Business.find_by(id: params[:business]).account_id == session[:user_id] %>
+<% if Business.get_my_business(params[:business]).account_id == current_user.id %>
         <%= form_tag editbiz_path do %>
                 <%= hidden_field_tag "biz_id", @params[:business] %>
                 <%= submit_tag "Edit Business",:class=>"editbiz"%>
@@ -20,8 +24,8 @@
                 <a id="itemcost"> - $<%= item.cost %></a>
         </div>
 <% end %>
-<% if Business.find_by(id: params[:business]).account_id == session[:user_id] %>
-        <%= form_tag additem_path do %>
+<% if Business.get_my_business(params[:business]).account_id == current_user.id %>
+        <%= form_tag additem_path([params[:id]],[params[:business_name]]) do %>
                 <%= hidden_field_tag "biz_id", params[:business]%>
                 <%= submit_tag "Add Item",:class=>"newitem"%>
         <% end %>

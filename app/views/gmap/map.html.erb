@@ -25,7 +25,7 @@
       var zoom = 10;
       if (geopoints > 1){
         center = Math.round(geopoints.length/2);
-        zoom = 7;
+        zoom = 20;
       }
       map = new google.maps.Map(document.getElementById('map'), {
         center: {lat:geopoints[center]["latitude"], lng:geopoints[center]["longitude"]},
@@ -54,9 +54,8 @@
         <% @geos = []%>
         <% if @search == [] %>
           var src = <%= raw @input.to_json%>
-          <% data = Gmaps.find_by(account_id: session[:user_id]) %>
-          <% account = Account.find_by(id: session[:user_id]) %>
-          <% @geos << {"name" => account.name, "latitude" => data.latitude, "longitude" => data.longitude}%>
+          <% data = Gmaps.my_location(current_user.id) %>
+          <% @geos << {"name" => current_user.name, "latitude" => data.latitude, "longitude" => data.longitude}%>
           geopoints = <%= raw @geos.to_json %>
         <% else%>
           geopoints = <%= raw @search.to_json %>;
@@ -64,11 +63,5 @@
         initMap(geopoints)
     });
 
-    function get_geo (geopoints){
-        var location = prompt("Please Enter Your City and State. *Still Not done at this part yet*");
-        if (location == ""){
-          get_geo(geopoints);
-        }
-    }
     </script>
 <% end %>
