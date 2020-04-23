@@ -10,11 +10,6 @@
 <div id="nt_prt">
     <a id="biztitle">New Business</a>
     <%= form_tag account_menu_business_new_path do %>
-        <% if @error %>
-            <script>
-                alert(raw <%= @error.to_json %>)
-            </script>
-        <% end %>
         <%= text_field_tag 'nbname',nil, placeholder: 'Business Name', :class => 'enterbiz', type: "text" %><br>
         <%= text_field_tag 'nbaddress',nil, placeholder: 'Business Address', :class => 'enterbiz', type: "text" %><br>
         <%= text_field_tag 'nbtype',nil, placeholder: 'Business Type', :class => 'enterbiz', type: "text" %><br>

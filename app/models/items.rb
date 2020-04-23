@@ -1,7 +1,7 @@
 class Items < ActiveRecord::Base
     belongs_to :business
     scope :new_item, -> (info) { new(info) }
-    scope :business_items, -> (business_id) { where(business_id: business_id) }
+    scope :business_items, -> (business_id) { where(business_id: business_id).order(name: :asc) }
 
     def self.save_new_item(params)
         new_item = {

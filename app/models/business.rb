@@ -2,6 +2,7 @@ class Business < ActiveRecord::Base
     belongs_to :account
     has_many :items
     scope :my_business_list, -> (get_em_all) { where(account_id: get_em_all).order(name: :asc) }
+    scope :my_business_item, -> (all_items) { where() }
     scope :delete_business, -> (business_id) { find_by(id: business_id).destroy }
     scope :get_my_business, -> (business_id) { find_by(id: business_id) }
 
