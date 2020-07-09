@@ -1,9 +1,2 @@
 //= link_tree ../images
 //= link_directory ../stylesheets .css
-//= link chat/chat.css
-//= link chat/newchat.css
-//= link chat/show.css
-//= link chat/participants.css
-//= link login/login.css
-//= link maps/map.css
-//= link business/newbiz.css
